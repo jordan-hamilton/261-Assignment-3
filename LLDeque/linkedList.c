@@ -1,13 +1,13 @@
 /***********************************************************
-* Author: 
-* Email: 
-* Date Created: 
+* Author: Jordan Hamilton
+* Email: hamiltj2@oregonstate.edu
+* Date Created: May 5, 2019
 * Filename: linkedList.c
 *
 * Overview:
-*   This program is a linked list implementation of the deque 
-*	(as worked on in Worksheet 19) and bag (as worked on in 
-*	Worksheet 22) ADTs. 
+*   This program is a linked list implementation of the deque
+*	(as worked on in Worksheet 19) and bag (as worked on in
+*	Worksheet 22) ADTs.
 *	The deque ADT allows for the following behavior:
 *		- adding a new link to the front/back
 *		- getting the value of the front/back links
@@ -203,7 +203,7 @@ void linkedListAddBack(struct LinkedList* deque, TYPE value)
 	pre:	deque is not null
 	pre:	deque is not empty
 	post:	none
-	ret:	first link's value 
+	ret:	first link's value
  */
 TYPE linkedListFront(struct LinkedList* deque)
 {
@@ -218,7 +218,7 @@ TYPE linkedListFront(struct LinkedList* deque)
 	pre:	deque is not null
 	pre:	deque is not empty
 	post:	none
-	ret:	last link's value 
+	ret:	last link's value
  */
 TYPE linkedListBack(struct LinkedList* deque)
 {
@@ -273,7 +273,7 @@ int linkedListIsEmpty(struct LinkedList* deque)
 	param:	deque	struct LinkedList ptr
 	pre:	deque is not null
 	post:	none
-	ret:	outputs to the console the values of the links from front 
+	ret:	outputs to the console the values of the links from front
 			to back; if empty, prints msg that is empty
  */
 void linkedListPrint(struct LinkedList* deque)
