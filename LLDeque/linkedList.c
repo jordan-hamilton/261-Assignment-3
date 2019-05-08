@@ -1,29 +1,29 @@
 /***********************************************************
-* Author: Jordan Hamilton
-* Email: hamiltj2@oregonstate.edu
-* Date Created: May 5, 2019
-* Filename: linkedList.c
-*
-* Overview:
-*   This program is a linked list implementation of the deque
-*	(as worked on in Worksheet 19) and bag (as worked on in
-*	Worksheet 22) ADTs.
-*	The deque ADT allows for the following behavior:
-*		- adding a new link to the front/back
-*		- getting the value of the front/back links
-*		- removing the front/back link
-*	The bag ADT allows for the following behavior:
-*		- adding a new link
-*		- checking if a link exists with a given value
-*		- removing a link  with a given value if it exists
-*	Both allow for:
-*		- checking if empty
-*		- printing the values of all of the links
-*
-*	Note that both implementations utilize a linked list with
-*	both a front and back sentinel and double links (links with
-*	next and prev pointers).
-************************************************************/
+ * Author: Jordan Hamilton
+ * Email: hamiltj2@oregonstate.edu
+ * Date Created: May 5, 2019
+ * Filename: linkedList.c
+ *
+ * Overview:
+ *   This program is a linked list implementation of the deque
+ *	(as worked on in Worksheet 19) and bag (as worked on in
+ *	Worksheet 22) ADTs.
+ *	The deque ADT allows for the following behavior:
+ *		- adding a new link to the front/back
+ *		- getting the value of the front/back links
+ *		- removing the front/back link
+ *	The bag ADT allows for the following behavior:
+ *		- adding a new link
+ *		- checking if a link exists with a given value
+ *		- removing a link  with a given value if it exists
+ *	Both allow for:
+ *		- checking if empty
+ *		- printing the values of all of the links
+ *
+ *	Note that both implementations utilize a linked list with
+ *	both a front and back sentinel and double links (links with
+ *	next and prev pointers).
+ ************************************************************/
 #include "linkedList.h"
 #include <assert.h>
 #include <stdlib.h>
@@ -50,17 +50,17 @@ struct LinkedList
 };
 
 /**
-  	Allocates the list's sentinel and sets the size to 0.
-  	The sentinels' next and prev should point to eachother or NULL
-  	as appropriate.
-	param: 	list 	struct LinkedList ptr
-	pre: 	list is not null
-	post: 	list front and back sentinel not null
-			front sentinel next points to back
-			front sentinel prev points to null
-			back sentinel prev points to front
-			back sentinel next points to null
-			list size is 0
+    Allocates the list's sentinel and sets the size to 0.
+    The sentinels' next and prev should point to eachother or NULL
+    as appropriate.
+   param:   list  struct LinkedList ptr
+   pre:   list is not null
+   post:  list front and back sentinel not null
+      front sentinel next points to back
+      front sentinel prev points to null
+      back sentinel prev points to front
+      back sentinel next points to null
+      list size is 0
  */
 static void init(struct LinkedList* list) {
 	assert(list != 0);
@@ -80,15 +80,15 @@ static void init(struct LinkedList* list) {
 }
 
 /**
- 	Adds a new link with the given value before the given link and
-	increments the list's size.
- 	param: 	list 	struct LinkedList ptr
- 	param:	link 	struct Link ptr
- 	param: 	TYPE
-	pre: 	list and link are not null
-	post: 	newLink is not null
-			newLink w/ given value is added before param link
-			list size is incremented by 1
+   Adds a new link with the given value before the given link and
+   increments the list's size.
+   param:   list  struct LinkedList ptr
+   param:	link  struct Link ptr
+   param:   TYPE
+   pre:   list and link are not null
+   post:  newLink is not null
+      newLink w/ given value is added before param link
+      list size is incremented by 1
  */
 static void addLinkBefore(struct LinkedList* list, struct Link* link, TYPE value)
 {
@@ -110,14 +110,14 @@ static void addLinkBefore(struct LinkedList* list, struct Link* link, TYPE value
 }
 
 /**
-	Removes the given link from the list and
-	decrements the list's size.
-	param: 	list 	struct LinkedList ptr
- 	param:	link 	struct Link ptr
-	pre: 	list and link are not null
-	post: 	param link is removed from param list
-			memory allocated to link is freed
-			list size is decremented by 1
+   Removes the given link from the list and
+   decrements the list's size.
+   param:   list  struct LinkedList ptr
+   param:	link  struct Link ptr
+   pre:   list and link are not null
+   post:  param link is removed from param list
+      memory allocated to link is freed
+      list size is decremented by 1
  */
 static void removeLink(struct LinkedList* list, struct Link* link)
 {
@@ -135,11 +135,11 @@ static void removeLink(struct LinkedList* list, struct Link* link)
 }
 
 /**
-	Allocates and initializes a list.
-	pre: 	none
-	post: 	memory allocated for new struct LinkedList ptr
-			list init (call to init func)
-	return: list
+   Allocates and initializes a list.
+   pre:   none
+   post:  memory allocated for new struct LinkedList ptr
+      list init (call to init func)
+   return: list
  */
 struct LinkedList* linkedListCreate()
 {
@@ -149,13 +149,13 @@ struct LinkedList* linkedListCreate()
 }
 
 /**
-	Deallocates every link in the list including the sentinels,
-	and frees the list itself.
-	param:	list 	struct LinkedList ptr
-	pre: 	list is not null
-	post: 	memory allocated to each link is freed
-			" " front and back sentinel " "
-			" " list " "
+   Deallocates every link in the list including the sentinels,
+   and frees the list itself.
+   param:	list  struct LinkedList ptr
+   pre:   list is not null
+   post:  memory allocated to each link is freed
+      " " front and back sentinel " "
+      " " list " "
  */
 void linkedListDestroy(struct LinkedList* list)
 {
@@ -170,12 +170,12 @@ void linkedListDestroy(struct LinkedList* list)
 }
 
 /**
-	Adds a new link with the given value to the front of the deque.
-	param: 	deque 	struct LinkedList ptr
-	param: 	value 	TYPE
-	pre: 	deque is not null
-	post: 	link is created w/ param value stored before current first link
-			(call to addLinkBefore)
+   Adds a new link with the given value to the front of the deque.
+   param:   deque   struct LinkedList ptr
+   param:   value   TYPE
+   pre:   deque is not null
+   post:  link is created w/ param value stored before current first link
+      (call to addLinkBefore)
  */
 void linkedListAddFront(struct LinkedList* deque, TYPE value)
 {
@@ -184,12 +184,12 @@ void linkedListAddFront(struct LinkedList* deque, TYPE value)
 }
 
 /**
-	Adds a new link with the given value to the back of the deque.
-	param: 	deque 	struct LinkedList ptr
-	param: 	value 	TYPE
-	pre: 	deque is not null
-	post: 	link is created with given value before current last link
-			(call to addLinkBefore)
+   Adds a new link with the given value to the back of the deque.
+   param:   deque   struct LinkedList ptr
+   param:   value   TYPE
+   pre:   deque is not null
+   post:  link is created with given value before current last link
+      (call to addLinkBefore)
  */
 void linkedListAddBack(struct LinkedList* deque, TYPE value)
 {
@@ -198,12 +198,12 @@ void linkedListAddBack(struct LinkedList* deque, TYPE value)
 }
 
 /**
-	Returns the value of the link at the front of the deque.
-	param: 	deque 	struct LinkedList ptr
-	pre:	deque is not null
-	pre:	deque is not empty
-	post:	none
-	ret:	first link's value
+   Returns the value of the link at the front of the deque.
+   param:   deque   struct LinkedList ptr
+   pre:	deque is not null
+   pre:	deque is not empty
+   post:	none
+   ret:	first link's value
  */
 TYPE linkedListFront(struct LinkedList* deque)
 {
@@ -213,12 +213,12 @@ TYPE linkedListFront(struct LinkedList* deque)
 }
 
 /**
-	Returns the value of the link at the back of the deque.
-	param: 	deque 	struct LinkedList ptr
-	pre:	deque is not null
-	pre:	deque is not empty
-	post:	none
-	ret:	last link's value
+   Returns the value of the link at the back of the deque.
+   param:   deque   struct LinkedList ptr
+   pre:	deque is not null
+   pre:	deque is not empty
+   post:	none
+   ret:	last link's value
  */
 TYPE linkedListBack(struct LinkedList* deque)
 {
@@ -228,11 +228,11 @@ TYPE linkedListBack(struct LinkedList* deque)
 }
 
 /**
-	Removes the link at the front of the deque.
-	param: 	deque 	struct LinkedList ptr
-	pre:	deque is not null
-	pre:	deque is not empty
-	post:	first link is removed and freed (call to removeLink)
+   Removes the link at the front of the deque.
+   param:   deque   struct LinkedList ptr
+   pre:	deque is not null
+   pre:	deque is not empty
+   post:	first link is removed and freed (call to removeLink)
  */
 void linkedListRemoveFront(struct LinkedList* deque)
 {
@@ -242,11 +242,11 @@ void linkedListRemoveFront(struct LinkedList* deque)
 }
 
 /**
-	Removes the link at the back of the deque.
-	param: 	deque 	struct LinkedList ptr
-	pre:	deque is not null
-	pre:	deque is not empty
-	post:	last link is removed and freed (call to removeLink)
+   Removes the link at the back of the deque.
+   param:   deque   struct LinkedList ptr
+   pre:	deque is not null
+   pre:	deque is not empty
+   post:	last link is removed and freed (call to removeLink)
  */
 void linkedListRemoveBack(struct LinkedList* deque)
 {
@@ -256,11 +256,11 @@ void linkedListRemoveBack(struct LinkedList* deque)
 }
 
 /**
-	Returns 1 if the deque is empty and 0 otherwise.
-	param:	deque	struct LinkedList ptr
-	pre:	deque is not null
-	post:	none
-	ret:	1 if its size is 0 (empty), otherwise 0 (not empty)
+   Returns 1 if the deque is empty and 0 otherwise.
+   param:	deque	struct LinkedList ptr
+   pre:	deque is not null
+   post:	none
+   ret:	1 if its size is 0 (empty), otherwise 0 (not empty)
  */
 int linkedListIsEmpty(struct LinkedList* deque)
 {
@@ -269,12 +269,12 @@ int linkedListIsEmpty(struct LinkedList* deque)
 }
 
 /**
-	Prints the values of the links in the deque from front to back.
-	param:	deque	struct LinkedList ptr
-	pre:	deque is not null
-	post:	none
-	ret:	outputs to the console the values of the links from front
-			to back; if empty, prints msg that is empty
+   Prints the values of the links in the deque from front to back.
+   param:	deque	struct LinkedList ptr
+   pre:	deque is not null
+   post:	none
+   ret:	outputs to the console the values of the links from front
+      to back; if empty, prints msg that is empty
  */
 void linkedListPrint(struct LinkedList* deque)
 {
@@ -292,14 +292,14 @@ void linkedListPrint(struct LinkedList* deque)
 }
 
 /**
-	Adds a link with the given value to the bag.
-	param:	bag		struct LinkedList ptr
-	param: 	value 	TYPE
-	pre: 	bag is not null
-	post: 	link is created w/ given value before current first link
-			(call to addLinkBefore)
-			Note that bag doesn't specify where new link should be added;
-			can be anywhere in bag according to its ADT.
+   Adds a link with the given value to the bag.
+   param:	bag		struct LinkedList ptr
+   param:   value   TYPE
+   pre:   bag is not null
+   post:  link is created w/ given value before current first link
+      (call to addLinkBefore)
+      Note that bag doesn't specify where new link should be added;
+      can be anywhere in bag according to its ADT.
  */
 void linkedListAdd(struct LinkedList* bag, TYPE value)
 {
@@ -308,12 +308,12 @@ void linkedListAdd(struct LinkedList* bag, TYPE value)
 }
 
 /**
-	Returns 1 if a link with the value is in the bag and 0 otherwise.
-	param:	bag		struct LinkedList ptr
-	param: 	value 	TYPE
-	pre: 	bag is not null
-	post:	none
-	ret:	1 if link with given value found; otherwise, 0
+   Returns 1 if a link with the value is in the bag and 0 otherwise.
+   param:	bag		struct LinkedList ptr
+   param:   value   TYPE
+   pre:   bag is not null
+   post:	none
+   ret:	1 if link with given value found; otherwise, 0
  */
 int linkedListContains(struct LinkedList* bag, TYPE value)
 {
@@ -329,12 +329,12 @@ int linkedListContains(struct LinkedList* bag, TYPE value)
 }
 
 /**
-	Removes the first occurrence of a link with the given value.
-	param:	bag		struct LinkedList ptr
-	param: 	value 	TYPE
-	pre: 	bag is not null
-	post:	if link with given value found, link is removed
-			(call to removeLink)
+   Removes the first occurrence of a link with the given value.
+   param:	bag		struct LinkedList ptr
+   param:   value   TYPE
+   pre:   bag is not null
+   post:	if link with given value found, link is removed
+      (call to removeLink)
  */
 void linkedListRemove(struct LinkedList* bag, TYPE value)
 {
